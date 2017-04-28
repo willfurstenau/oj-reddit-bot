@@ -89,3 +89,4 @@ ENV/
 .ropeproject
 
 praw.ini
+.ini
