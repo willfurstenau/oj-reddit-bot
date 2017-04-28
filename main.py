@@ -21,11 +21,11 @@ else:
 hardwareswap = reddit.subreddit('hardwareswap')
 oj_sub = reddit.subreddit('ojtestsub')
 
-for submission in hardwareswap.new(limit=50):
+for submission in hardwareswap.new(limit=5):
 
     if submission.id not in read_posts:
         if(submission.link_flair_text == "Selling"):
-            for key in keywords
+            for key in keywords:
                 if key in submission.title:
                     oj_sub.submit(title=submission.title, url=submission.url)
                     read_posts.append(submission.id)
