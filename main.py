@@ -4,7 +4,7 @@ import praw
 import os
 from datetime import datetime
 
-
+keywords = ['SSD', 'PB278Q', 'QX2710']
 reddit = praw.Reddit('bot1')
 
 #reddit.login(REDDIT_USERNAME,REDDIT_PASS)
@@ -25,14 +25,11 @@ for submission in hardwareswap.new(limit=50):
 
     if submission.id not in read_posts:
         if(submission.link_flair_text == "Selling"):
-            if 'SSD' in submission.title:
-                oj_sub.submit(title=submission.title, url=submission.url)
-                read_posts.append(submission.id)
+            for key in keywords
+                if key in submission.title:
+                    oj_sub.submit(title=submission.title, url=submission.url)
+                    read_posts.append(submission.id)
 
-submission.id = '67z3ki'
-reply = "Still working! "
-reply = reply + datetime.now().strftime("%H:%M:%S %d/%m/%Y")
-submission.reply(reply)
 
 with open("read_posts.txt", "w") as f:
     for post_id in read_posts:
