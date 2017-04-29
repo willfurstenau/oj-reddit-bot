@@ -29,7 +29,7 @@ for submission in hardwareswap.new(limit=100):
                     h = submission.title.find("[H]") + 4
                     w = submission.title.find("[W]")
                     title = "[" + key + "]" + "   " + submission.title[h:w]
-                    oj_sub.submit(title=title, url=submission.url, key)
+                    oj_sub.submit(title=title, url=submission.url)
                     read_posts.append(submission.id)
 
 
