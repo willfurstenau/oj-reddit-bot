@@ -4,7 +4,7 @@ import praw
 import os
 from datetime import datetime
 
-keywords = ['SSD', 'PB278Q', 'QX2710']
+keywords = ['SSD', 'PB278Q', 'QX2710', 'MG279Q']
 reddit = praw.Reddit('bot1')
 
 #reddit.login(REDDIT_USERNAME,REDDIT_PASS)
@@ -21,13 +21,15 @@ else:
 hardwareswap = reddit.subreddit('hardwareswap')
 oj_sub = reddit.subreddit('ojtestsub')
 
-for submission in hardwareswap.new(limit=5):
-
+for submission in hardwareswap.new(limit=100):
     if submission.id not in read_posts:
         if(submission.link_flair_text == "Selling"):
             for key in keywords:
-                if key in submission.title:
-                    oj_sub.submit(title=submission.title, url=submission.url)
+                if key in submission.title or key in submission.selftext:
+                    h = submission.title.find("[H]") + 4
+                    w = submission.title.find("[W]")
+                    title = "[" + key + "]" + "   " + submission.title[h:w]
+                    oj_sub.submit(title=title, url=submission.url, key)
                     read_posts.append(submission.id)
 
 
