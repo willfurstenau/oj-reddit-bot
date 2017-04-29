@@ -25,7 +25,7 @@ for submission in hardwareswap.new(limit=100):
     if submission.id not in read_posts:
         if(submission.link_flair_text == "Selling"):
             for key in keywords:
-                if key in submission.title or key in submission.selftext:
+                if key.lower() in submission.title.lower() or key.lower() in submission.selftext.lower():
                     h = submission.title.find("[H]") + 4
                     w = submission.title.find("[W]")
                     title = "[" + key + "]" + "   " + submission.title[h:w]
