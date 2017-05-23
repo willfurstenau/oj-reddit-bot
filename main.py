@@ -2,7 +2,7 @@
 
 import praw
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 
 keywords = ['PB278Q', 'QX2710', 'MG279Q']
 reddit = praw.Reddit('bot1')
@@ -32,6 +32,10 @@ for submission in hardwareswap.new(limit=5):
                     oj_sub.submit(title=title, url=submission.url)
                     read_posts.append(submission.id)
 
+for submission in oj_sub.new(limit = 100):
+	if (datetime.fromtimestamp(submission.created) < (datetime.today() - timedelta(2))):
+#		print (submission.title)
+		submission.delete()
 
 with open("read_posts.txt", "w") as f:
     for post_id in read_posts:
