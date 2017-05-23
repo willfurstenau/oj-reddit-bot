@@ -4,7 +4,7 @@ import praw
 import os
 from datetime import datetime
 
-keywords = ['SSD', 'PB278Q', 'QX2710', 'MG279Q']
+keywords = ['PB278Q', 'QX2710', 'MG279Q']
 reddit = praw.Reddit('bot1')
 
 #reddit.login(REDDIT_USERNAME,REDDIT_PASS)
