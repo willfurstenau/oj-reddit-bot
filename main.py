@@ -4,7 +4,7 @@ import praw
 import os
 from datetime import datetime, timedelta
 
-keywords = ['PB278Q', 'QX2710', 'MG279Q']
+keywords = ['PB278Q', 'QX2710', 'MG279Q', '480']
 reddit = praw.Reddit('bot1')
 
 #reddit.login(REDDIT_USERNAME,REDDIT_PASS)
